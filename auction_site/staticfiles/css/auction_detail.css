@@ -1,0 +1,110 @@
+/* Styles for desktop */
+.auction-image img {
+    display: block;
+    margin: 0 auto;
+    max-width: 100%;
+    max-height: 500px; /* Set the maximal height */
+    width: auto; /* Adjust the width */
+    border-radius: 8px; /* Round the borders */
+}
+
+.auction-details {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.auction-details table {
+    width: 80%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+    border: none;
+}
+
+.auction-details th, .auction-details td {
+    border: none;
+    padding: 8px;
+}
+
+.auction-details th:first-child, .auction-details td:first-child {
+    width: 15%;
+    text-align: right;
+}
+
+.auction-details th {
+    text-align: left;
+}
+
+.bid-section, .watchlist-section {
+    margin-top: 20px;
+}
+
+.bid-section {
+    margin-top: 20px;
+    text-align: center;
+}
+
+.bid-section form {
+    display: inline-block;
+    text-align: left;
+}
+
+.bid-section button {
+    display: block;
+    margin: 10px auto;
+    background-color: #ffd60a;
+    color: #003566;
+    padding: 10px 20px;
+    border: none;
+    cursor: pointer;
+}
+
+.bid-section button:hover {
+    background-color: #ffd60a;
+}
+
+.bid-section button, .watchlist-section button {
+    background-color: #ffd60a;
+    color: #003566;
+    padding: 10px 20px;
+    border: none;
+    cursor: pointer;
+}
+
+.bid-section button:hover, .watchlist-section button:hover {
+    background-color: #ffd60a;
+}
+
+.watchlist-section button {
+    display: block;
+    margin: 10px auto;
+}
+
+.closed-auction {
+    color: #f77f00;
+    text-align: center;
+}
+
+/* Styles for smaller devices */
+@media (max-width: 768px) {
+    .auction-details {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .auction-details table {
+        width: 100%;
+    }
+
+    .auction-details th:first-child, .auction-details td:first-child {
+        text-align: left;
+    }
+
+    .bid-section form {
+        width: 100%;
+    }
+
+    .bid-section button, .watchlist-section button {
+        width: 100%;
+    }
+}

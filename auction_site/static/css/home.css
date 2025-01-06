@@ -1,0 +1,120 @@
+/* styles for desktop */
+.boxes {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+    margin: 0 auto;
+    padding: 16px;
+}
+
+.fact-box {
+    background-color: #ffd60a;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    margin-bottom: 12px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.fact-text {
+    font-size: 2em;
+    margin-bottom: 10px;
+}
+
+.fact-number {
+    font-size: 4em;
+    font-weight: bold;
+}
+
+#auction-gif, #money-gif {
+    padding: 0px;
+}
+
+#fact1, #fact2, #fact3, #watchlist {
+    padding: 16px;
+}
+
+#fact1, #watchlist {
+    background-color: #f77f00;
+    color: #003566;
+}
+
+#fact2, #fact3 {
+    background-color: #003566;
+    color: #ffd60a;
+}
+
+.fact-box img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 8px;
+}
+
+#watchlist {
+    background-color: #f77f00;
+    color: #003566;
+}
+
+.watchlist-link {
+    display: block;
+    margin-top: 8px;
+    font-size: 1.2em;
+    color: #003566;
+    text-decoration: underline;
+}
+
+.login-panel {
+    text-align: center;
+}
+
+.login-panel h2 {
+    font-size: 2.5em;
+    margin-bottom: 20px;
+}
+
+.login-panel a {
+    display: block;
+    margin: 10px 0;
+    font-size: 1.2em;
+    color: #003566;
+    text-decoration: underline;
+}
+
+.login-panel p {
+    font-size: 1.2em;
+}
+
+
+/* Styles for smaller devices */
+@media (max-width: 768px) {
+    .boxes {
+        grid-template-columns: repeat(2, 1fr); /* 2 columns on medium screens */
+    }
+
+    .fact-text {
+        font-size: 1.5em;
+    }
+
+    .fact-number {
+        font-size: 3em;
+    }
+}
+
+@media (max-width: 480px) {
+    .boxes {
+        grid-template-columns: 1fr; /* 1 column on small screens */
+    }
+
+    .fact-text {
+        font-size: 1.2em;
+    }
+
+    .fact-number {
+        font-size: 2.5em;
+    }
+}

@@ -1,0 +1,55 @@
+{% extends 'auctions/base.html' %}
+{% load static %}
+
+{% block title %}Create Auction{% endblock %}
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/auction_create.css' %}">
+{% endblock %}
+{% block script %}
+<script src="{% static 'js/auction_create.js' %}"></script>
+{% endblock %}
+
+{% block content %}
+<h1>Create New Auction</h1>
+<form id="auction-form" method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    <table class="form-table">
+        <tr>
+            <td><label for="title">Title</label></td>
+            <td><input type="text" id="title" name="title" value="{{ form.title.value }}"></td>
+        </tr>
+        <tr>
+            <td><label for="description">Description</label></td>
+            <td><textarea id="description" name="description" rows="10">{{ form.description.value }}</textarea></td>
+        </tr>
+        <tr>
+            <td><label for="starting_price">Starting Price</label></td>
+            <td><input type="number" id="starting_price" name="starting_price" value="{{ form.starting_price.value }}"></td>
+        </tr>
+        <tr>
+            <td><label for="auction_end_date">Auction End Date</label></td>
+            <td><input type="date" id="auction_end_date" name="auction_end_date" value="{{ form.auction_end_date.value }}"></td>
+        </tr>
+        <tr>
+            <td><label for="auction_end_time">Auction End Time</label></td>
+            <td><input type="time" id="auction_end_time" name="auction_end_time" value="{{ form.auction_end_time.value }}"></td>
+        </tr>
+        <tr>
+            <td><label for="image">Image</label></td>
+            <td>
+                <input type="file" id="image" name="image">
+                <img id="photoPreview" src="#" alt="Photo Preview" style="display: none; max-width: 100%; border: 1px solid #ccc; margin-top: 10px;">
+            </td>
+        </tr>
+    </table>
+    <button type="submit">Create Auction</button>
+</form>
+
+{% if form.errors %}
+    <ul style="color: red;">
+        {% for field, errors in form.errors.items %}
+            <li>{{ errors|join:"; " }}</li>
+        {% endfor %}
+    </ul>
+{% endif %}
+{% endblock %}

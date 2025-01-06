@@ -1,0 +1,35 @@
+{% extends 'auctions/base.html' %}
+{% load static %}
+
+{% block title %}Watchlist{% endblock %}
+{% block extra_css %}<link rel="stylesheet" href="{% static 'css/auction_list.css' %}">{% endblock %}
+
+
+{% block content %}
+<h1>My Watchlist</h1>
+
+<div class="items_list">
+    {% if watchlist %}
+    {% for auction in watchlist %}
+
+        <div id="item" class="item">
+            <a class="title" href="{% url 'auction_detail' auction.id %}">{{ auction.title }}</a>
+            {% if auction.image %}
+                <p><img src="{{ auction.image.url }}" alt="{{ auction.title }}" style="max-width: 100%;"></p>
+            {% else %}
+                <p><img src="{% static 'images/default_image.jpg' %}" alt="No image available" style="max-width: 100%;"></p>
+            {% endif %}
+            <p class="description">{{ auction.description|truncatewords:20 }}</p>
+            <div class="price-end-date">
+                <p id="price">Current Price: <span class="amount">&#8364; {{ auction.current_price }}</span></p>
+            <p class="end_date">Ends: {{ auction.auction_end_date }}</p>
+            </div>
+        </div>
+
+    {% endfor %}
+    {% else %}
+    <h3>No auctions in your watchlist.</h3>
+    {% endif %}
+</div>
+
+{% endblock %}

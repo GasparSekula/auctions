@@ -1,0 +1,51 @@
+{% extends 'auctions/base.html' %}
+{% load static %}
+
+{% block title %}Home{% endblock %}
+
+{% block extra_css %}
+    <link rel="stylesheet" href="{% static 'css/home.css' %}">{% endblock %}
+
+
+{% block content %}
+    <h1>Welcome to the Auctionary!</h1>
+    <div class="boxes">
+        <div class="fact-box" id="fact1">
+            <p class="fact-text">Total Auctions: </p><span class="fact-number">{{ total_auctions }}</span>
+        </div>
+
+        <div class="fact-box" id="auction-gif">
+            <img src="{% static 'images/auction.gif' %}" alt="Auction gif">
+        </div>
+
+
+        <div class="fact-box" id="fact2">
+            <p class="fact-text">Active Auctions: </p><span class="fact-number">{{ active_auctions }}</span>
+        </div>
+
+        <div class="fact-box" id="fact3">
+            <p class="fact-text">Most Expensive Auction Ever: </p> <span class="fact-number">&#8364; {{ most_expensive_auction }}</span>
+        </div>
+
+        <div class="fact-box" id="watchlist">
+            {% if user.is_authenticated %}
+                <p class="fact-text">Items on your Watchlist:</p>
+                <span class="fact-number">{{ user.watchlist.count }}</span>
+                <a href="{% url 'view_watchlist' %}" class="watchlist-link">Visit Your Watchlist</a>
+            {% else %}
+                <div class="login-panel">
+                    <h2>Login</h2>
+                    <a href="{% url 'account_login' %}">Login</a>
+                    <p>Don't have an account? </p>
+                    <a href="{% url 'account_signup' %}">Sign Up</a>
+                </div>
+            {% endif %}
+        </div>
+
+        <div class="fact-box" id="money-gif">
+            <img src="{% static 'images/money.gif' %}" alt="Auction gif">
+        </div>
+    </div>
+
+
+{% endblock %}

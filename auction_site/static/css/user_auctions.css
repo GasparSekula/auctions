@@ -1,0 +1,80 @@
+/* Styles for desktop */
+table {
+    margin-top: 30px;
+    width: 100%;
+    border-collapse: collapse;
+}
+
+th, td {
+    border-bottom: 1px solid #ddd;
+    padding: 8px;
+    text-align: left;
+}
+
+th {
+    background-color: #f2f2f2;
+}
+
+td:nth-child(1) {
+    width: 40%;
+}
+
+td:nth-child(n+2):nth-child(-n+5) {
+    width: 15%;
+}
+
+
+a:hover {
+    text-decoration: underline;
+}
+
+
+
+.details-button {
+    background-color: #ffd60a;
+    padding: 5px 10px;
+    border-radius: 5px;
+    text-decoration: none;
+    color: #003566;
+    font-weight: bold;
+}
+
+
+/* Styles for smaller devices */
+@media (max-width: 768px) {
+    th, td {
+        padding: 6px;
+    }
+
+    td:nth-child(1) {
+        width: 30%;
+    }
+
+    td:nth-child(n+2):nth-child(-n+5) {
+        width: 70%;
+    }
+
+    .details-button {
+        width: 100%;
+        text-align: center;
+    }
+}
+
+@media (max-width: 480px) {
+    th, td {
+        padding: 4px;
+    }
+
+    td:nth-child(1) {
+        width: 40%;
+    }
+
+    td:nth-child(n+2):nth-child(-n+5) {
+        width: 60%;
+    }
+
+    .details-button {
+        width: 100%;
+        text-align: center;
+    }
+}

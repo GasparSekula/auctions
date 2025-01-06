@@ -1,0 +1,75 @@
+/* Styles for standard display - desktop */
+
+form {
+     display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 16px;
+    border: none;
+    table-layout: fixed;
+}
+
+td {
+    padding: 8px;
+    border: none;
+    vertical-align: middle;
+}
+
+td:first-child {
+    text-align: right; /* Align text in the left column to the right */
+}
+
+td:last-child {
+    text-align: left; /* Align text in the right column to the left */
+}
+
+label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 4px;
+}
+
+input[type="text"],
+input[type="time"],
+input[type="number"],
+select {
+    width: 69%;
+    padding: 8px;
+    border: 1px solid grey;
+    border-radius: 4px;
+    font-size: 0.8em;
+}
+
+button[type="submit"] {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    display: block;
+    margin-top: 20px;
+}
+
+
+/* Styles for smaller devices */
+@media (max-width: 768px) {
+    input[type="text"],
+    input[type="time"],
+    input[type="number"],
+    select {
+        width: 100%;
+    }
+
+    td:first-child,
+    td:last-child {
+        text-align: center;
+    }
+
+    button[type="submit"] {
+        width: 100%;
+    }
+}

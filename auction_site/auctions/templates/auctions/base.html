@@ -1,0 +1,47 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Auction Site{% endblock %}</title>
+
+    <link rel="stylesheet" href="{% static 'css/base.css' %}">
+    {% block extra_css %}
+    {% endblock %}
+    {% block script %}
+    {% endblock %}
+</head>
+<body>
+<header>
+    <nav>
+        <ul>
+            <li class="{% if request.resolver_match.url_name == 'home' %}active{% endif %}"><a href="{% url 'home' %}">Home</a>
+            </li>
+            <li class="{% if request.resolver_match.url_name == 'auction_list' %}active{% endif %}"><a
+                    href="{% url 'auction_list' %}">Marketplace</a></li>
+            {% if user.is_authenticated %}
+                <li class="{% if request.resolver_match.url_name == 'auction_create' %}active{% endif %}"><a
+                        href="{% url 'auction_create' %}">Create New Auction</a></li>
+                <li class="{% if request.resolver_match.url_name == 'search' %}active{% endif %}"><a
+                        href="{% url 'search' %}">Search</a></li>
+
+                <li class="{% if request.resolver_match.url_name == 'view_watchlist' %}active{% endif %}"><a
+                        href="{% url 'view_watchlist' %}">My Watchlist</a></li>
+                <li><a href="{% url 'user_auctions' %}">My Auctions</a></li>
+                <li><a href="{% url 'notifications' %}">Notifications</a></li>
+                <li class="right"><a href="{% url 'account_logout' %}">My Account</a></li>
+            {% else %}
+                <li class="right"><a href="{% url 'account_login' %}">Login or Register</a></li>
+            {% endif %}
+        </ul>
+    </nav>
+</header>
+<main>
+    {% block content %}{% endblock %}
+</main>
+<footer>
+    <p>&copy; 2025 Auctionary</p>
+</footer>
+</body>
+</html>
