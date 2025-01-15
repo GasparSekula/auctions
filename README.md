@@ -59,7 +59,10 @@ This project was built using the following technologies:
       - Run the entire application using Docker for seamless setup.  
 
 11. **Task Scheduling with Celery** 🕒  
-    - Background task management for scalable operations. 
+    - Background task management for scalable operations.
+
+12. **API** 🔗
+    - Access auctions data via state-of-the-art API!
 
 ---
 🛍️ Auctionary
