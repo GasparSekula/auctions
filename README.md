@@ -39,7 +39,7 @@ This project was built using the following technologies:
 
 4. **Bid on Items** 💵  
    - Place bids on auctions and compete with others.
-
+     
 5. **Automatic Auction Closure** ⏳  
    - Auctions automatically close at the specified time.
 
