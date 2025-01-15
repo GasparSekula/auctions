@@ -32,31 +32,34 @@ This project was built using the following technologies:
    - Secure user login and registration functionality  
 
 2. **Create Auctions** 📝  
-   - Users can create auctions, including uploading images and setting starting prices  
+   - Users can create auctions, including uploading images and setting starting prices.  
 
 3. **Browse Active Auctions** 🔍  
-   - View all active auctions and filter by category  
+   - View all active or closed auctions and filter by date or price.
 
 4. **Bid on Items** 💵  
-   - Place bids on auctions and compete with others  
+   - Place bids on auctions and compete with others.
 
 5. **Automatic Auction Closure** ⏳  
-   - Auctions automatically close at the specified time  
+   - Auctions automatically close at the specified time.
 
-6. **Email Notifications** 📧  
-   - Get notified about bid status and auction updates  
+6. **Password email reset** 📧  
+   - The app follows high security standards. 
 
 7. **Search Functionality** 🔎  
-   - Easily find auctions using advanced search  
+   - Easily find auctions using advanced search.
 
 8. **Responsive Design** 📱  
-   - Fully optimized for mobile, tablet, and desktop  
+   - Fully optimized for mobile, tablet, and desktop.
 
-9. **Dockerized Deployment** 🐳  
-   - Run the entire application using Docker for seamless setup  
+9. **Watchlist** 📝
+   - Add to watchlist preferred auctions.
 
-10. **Task Scheduling with Celery** 🕒  
-    - Background task management for scalable operations  
+11. **Dockerized Deployment** 🐳  
+   - Run the entire application using Docker for seamless setup.  
+
+11. **Task Scheduling with Celery** 🕒  
+    - Background task management for scalable operations. 
 
 ---
 🛍️ Auctionary
