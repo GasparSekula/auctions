@@ -56,7 +56,7 @@ This project was built using the following technologies:
    - Add to watchlist preferred auctions.
 
 11. **Dockerized Deployment** 🐳  
-   - Run the entire application using Docker for seamless setup.  
+      - Run the entire application using Docker for seamless setup.  
 
 11. **Task Scheduling with Celery** 🕒  
     - Background task management for scalable operations. 
