@@ -3,29 +3,30 @@
 
 {% block title %}Notifications{% endblock %}
 
-{% block extra_css %}<link rel="stylesheet" href="{% static 'css/notifications.css' %}">{% endblock %}
+{% block extra_css %}
+    <link rel="stylesheet" href="{% static 'css/notifications.css' %}">{% endblock %}
 
 {% block content %}
-<h1>Notifications</h1>
-{% if notifications %}
-<table>
-    <thead>
-        <tr>
-            <th>Time</th>
-            <th>Message</th>
-        </tr>
-    </thead>
-    <tbody>
-        {% for notification in notifications %}
-        <tr>
-            <td>{{ notification.created_at|date:"SHORT_DATETIME_FORMAT" }}</td>
-            <td>{{ notification.message }}</td>
+    <h1>Notifications</h1>
+    {% if notifications %}
+        <table>
+            <thead>
+            <tr>
+                <th>Time</th>
+                <th>Message</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for notification in notifications %}
+                <tr>
+                    <td>{{ notification.created_at|date:"SHORT_DATETIME_FORMAT" }}</td>
+                    <td>{{ notification.message }}</td>
 
-        </tr>
-        {% endfor %}
-    </tbody>
-</table>
-{% else %}
-<h2>No notifications</h2>
-{% endif %}
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    {% else %}
+        <h2>No notifications</h2>
+    {% endif %}
 {% endblock %}

@@ -26,7 +26,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = "django-insecure-7ukk%@yc2kaz+2@s&kqeem=(74&mx!%ai4baob^42*4&m6z$tr"
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 ALLOWED_HOSTS = ['127.0.0.1', 'localhost']
 
 # Application definition
@@ -47,7 +47,7 @@ INSTALLED_APPS = [
     # Celery
     "django_celery_beat",
     "django_celery_results",
-    #Rest framework
+    # Rest framework
     "rest_framework",
     "rest_framework_xml",
     # Sass processor
@@ -60,7 +60,7 @@ INSTALLED_APPS = [
 
 MIDDLEWARE = [
     "django.middleware.security.SecurityMiddleware",
-# whitenoise
+    # whitenoise
     "whitenoise.middleware.WhiteNoiseMiddleware",
     "django.contrib.sessions.middleware.SessionMiddleware",
     "django.middleware.common.CommonMiddleware",
@@ -163,40 +163,34 @@ AUTHENTICATION_BACKENDS = [
 
 ACCOUNT_EMAIL_REQUIRED = True
 ACCOUNT_EMAIL_VERIFICATION = "mandatory"
-# ACCOUNT_AUTHENTICATION_METHOD = "username_email"
-# ACCOUNT_USERNAME_REQUIRED = True
 LOGIN_REDIRECT_URL = '/'
-# ACCOUNT_LOGOUT_REDIRECT_URL = '/'
-# ACCOUNT_SIGNUP_REDIRECT_URL = '/'
 
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
-# EMAIL_HOST = 'localhost'  # Use localhost as a fake SMTP server
-# EMAIL_PORT = 1025         # A common port for testing SMTP servers
-# EMAIL_USE_TLS = False
-# EMAIL_HOST_USER = 'noreply@auctions.com'  # Fake sender email
-# EMAIL_HOST_PASSWORD = ''  # No password needed for local testing
 DEFAULT_FROM_EMAIL = 'webmaster@localhost'
 
 # Celery settings
-
-
 # Redis as the broker
 CELERY_BROKER_URL = 'redis://localhost:6379/0'
 
-# Store task results in the database (Optional)
-CELERY_RESULT_BACKEND = 'django-db'
+# Store task results in the database
+CELERY_RESULT_BACKEND = 'redis://localhost:6379/0'
 
 # Task result expiration (in seconds)
-CELERY_TASK_RESULT_EXPIRES = 3600
+CELERY_TASK_RESULT_EXPIRES = 300
+
+# Task serializer
+CELERY_ACCEPT_CONTENT = ['json']
+CELERY_TASK_SERIALIZER = 'json'
+CELERY_RESULT_SERIALIZER = 'json'
 
 # Timezone
-CELERY_TIMEZONE = 'Etc/GMT-1'
+CELERY_TIMEZONE = 'UTC'
 
 # Schedule tasks
 CELERY_BEAT_SCHEDULE = {
     'notify-ended-auctions': {
         'task': 'auctions.tasks.notify_auction_ended',
-        'schedule': 3600.0,  # Run every hour
+        'schedule': 60.0,  # Run every hour
     },
 }
 

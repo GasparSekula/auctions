@@ -1,6 +1,7 @@
 from celery import shared_task
 from django.utils.timezone import now
-from .models import AuctionItem, Notification
+from .models import AuctionItem, Notification, Bid
+
 
 @shared_task
 def notify_auction_ended():
@@ -10,7 +11,7 @@ def notify_auction_ended():
         auction.save()
 
         # Notify the auction winner
-        winning_bid = auction.bids.order_by('-amount').first()
+        winning_bid = Bid.objects.filter(auction_item=auction).order_by('-amount').first()
         if winning_bid:
             Notification.objects.create(
                 user=winning_bid.user,

@@ -40,9 +40,11 @@
 }
 
 .bid-section {
-    margin-top: 20px;
-    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
+
 
 .bid-section form {
     display: inline-block;
@@ -73,6 +75,47 @@
 
 .bid-section button:hover, .watchlist-section button:hover {
     background-color: #ffd60a;
+}
+
+#bid-form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+#bid-form label {
+    margin-bottom: 5px;
+}
+
+/* Style for the input field */
+#bid-amount {
+    width: 120px; /* Makes it mobile-friendly */
+    margin-bottom: 10px;
+}
+
+
+#bid-error {
+    display: block; /* Ensure it appears when there is an error */
+    color: red;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+
+/* Style for the alert-danger message */
+
+.alert-danger ul {
+    padding: 0;
+    margin: 0;
+    list-style-type: none;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.alert-danger li {
+    text-align: center;
 }
 
 .watchlist-section button {

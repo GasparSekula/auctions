@@ -17,6 +17,7 @@ class AuctionItem(models.Model):
     updated_at = models.DateTimeField(auto_now=True)
     created_by = models.ForeignKey(User, on_delete=models.CASCADE, related_name='auction_items')
     watched_by = models.ManyToManyField(User, related_name='watchlist', blank=True)
+    is_active = models.BooleanField(default=True)
 
     def __str__(self):
         return f"{self.title} - starting price: {self.starting_price} EUR"

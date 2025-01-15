@@ -122,6 +122,7 @@ main {
     width: 100px;
     text-align: center;
 }
+
 .content-box {
     background-color: #fff; /* White background for the box */
     border: 1px solid #003566; /* Add border to the box */
@@ -162,7 +163,6 @@ h2 {
     text-align: center;
     color: #003566;
 }
-
 
 
 .back-button {

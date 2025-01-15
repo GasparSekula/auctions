@@ -1,17 +1,16 @@
-document.addEventListener('DOMContentLoaded', () => {
+document.addEventListener('DOMContentLoaded', function () {
     const auctionForm = document.getElementById('auction-form');
     const startingPriceInput = document.getElementById('starting_price');
-    const endDateInput = document.getElementById('auction_end_date');
-    const endTimeInput = document.getElementById('auction_end_time');
+    const auctionEndDatetimeInput = document.getElementById('auction_end_date');
     const photoPreview = document.getElementById('photoPreview');
     const imageInput = document.getElementById('image');
 
     // Real-time validation for starting price
     startingPriceInput.addEventListener('input', () => {
         const value = parseFloat(startingPriceInput.value);
-        if (value <= 0) {
+        if (isNaN(value) || value <= 0) {
             startingPriceInput.style.color = 'red';
-            startingPriceInput.setCustomValidity('Starting price must be greater than 0.');
+            startingPriceInput.setCustomValidity('Starting price must be a valid number greater than 0.');
         } else {
             startingPriceInput.style.color = 'black';
             startingPriceInput.setCustomValidity(''); // Reset custom validity
@@ -41,12 +40,9 @@ document.addEventListener('DOMContentLoaded', () => {
             return;
         }
 
-        const endDate = new Date(`${endDateInput.value}T${endTimeInput.value}`);
+        const auctionEndDatetime = new Date(auctionEndDatetimeInput.value);
         const now = new Date();
-        if (isNaN(endDate.getTime()) || endDate <= now) {
-            if (endDate.toDateString() === now.toDateString() && endDate > now) {
-                return;
-            }
+        if (!auctionEndDatetime || auctionEndDatetime <= now) {
             e.preventDefault();
             alert('Auction end date and time must be in the future.');
             return;

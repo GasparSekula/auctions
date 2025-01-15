@@ -3,43 +3,46 @@
 
 {% block title %}Search Auctions{% endblock %}
 
-{% block extra_css %}<link rel="stylesheet" href="{% static 'css/auction_list.css' %}">{% endblock %}
-
+{% block extra_css %}
+    <link rel="stylesheet" href="{% static 'css/auction_list.css' %}">
+{% endblock %}
 
 {% block content %}
-<h1>Search Auctions</h1>
-<div class="search-form">
-    <form method="get" id="search-form" autocomplete="off" action="{% url 'search' %}">
-        <input type="text" name="q" placeholder="Search items..." value="{{ query }}">
-        <button type="submit">Search</button>
-    </form>
-</div>
+    <h1>Search Auctions</h1>
+    <div class="search-form">
+        <form method="get" id="search-form">
+            {% csrf_token %}
+            <input type="text" id="search-input" name="search" value="{{ search_query|default_if_none:'' }}"
+                   placeholder="Search auctions...">
+            <button type="submit">Search</button>
+        </form>
+    </div>
 
-<div class="items_list">
-    {% if results %}
-    {% for auction in results %}
-
-        <div id="item" class="item">
-            <a class="title" href="{% url 'auction_detail' auction.id %}">{{ auction.title }}</a>
-            {% if auction.image %}
-                <p><img src="{{ auction.image.url }}" alt="{{ auction.title }}" style="max-width: 100%;"></p>
-            {% else %}
-                <p><img src="{% static 'images/default_image.jpg' %}" alt="No image available" style="max-width: 100%;"></p>
-            {% endif %}
-            <p class="description">{{ auction.description|truncatewords:20 }}</p>
-            <div class="price-end-date">
-                {% if auction.is_active %}
-                    <p id="price">Current Price: <span class="amount">&#8364; {{ auction.current_price }}</span></p>
-                    <p class="end_date">Ends: {{ auction.auction_end_date }}</p>
-                {% else %}
-                    <p class="closed">This auction is closed.</p>
-                {% endif %}
-            </div>
-        </div>
-
-    {% endfor %}
-    {% else %}
-        <p>No results found.</p>
-    {% endif %}
-</div>
+    <div class="items_list">
+        {% if results %}
+            {% for auction in results %}
+                <div id="item" class="item">
+                    <a class="title" href="{% url 'auction_detail' auction.id %}">{{ auction.title }}</a>
+                    {% if auction.image %}
+                        <p><img src="{{ auction.image.url }}" alt="{{ auction.title }}" style="max-width: 100%;"></p>
+                    {% else %}
+                        <p><img src="{% static 'images/default_image.jpg' %}" alt="No image available"
+                                style="max-width: 100%;"></p>
+                    {% endif %}
+                    <p class="description">{{ auction.description|truncatewords:20 }}</p>
+                    <div class="price-end-date">
+                        {% if auction.is_active %}
+                            <p id="price">Current Price: <span class="amount">&#8364; {{ auction.current_price }}</span>
+                            </p>
+                            <p class="end_date">Ends: {{ auction.auction_end_date }}</p>
+                        {% else %}
+                            <p class="closed">This auction is closed.</p>
+                        {% endif %}
+                    </div>
+                </div>
+            {% endfor %}
+        {% else %}
+            <p>No results found.</p>
+        {% endif %}
+    </div>
 {% endblock %}

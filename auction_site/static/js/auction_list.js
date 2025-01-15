@@ -13,8 +13,6 @@ document.addEventListener('DOMContentLoaded', function () {
     const filterForm = document.getElementById('filterForm');
     const minPriceInput = document.getElementById('min_price');
     const maxPriceInput = document.getElementById('max_price');
-    // const startDateInput = document.getElementById('start_date');
-    // const endDateInput = document.getElementById('end_date');
 
     filterForm.addEventListener('submit', (e) => {
         console.log('Form submission triggered.');
@@ -22,10 +20,8 @@ document.addEventListener('DOMContentLoaded', function () {
         // Parse input values
         const minPrice = minPriceInput.value ? parseFloat(minPriceInput.value) : null;
         const maxPrice = maxPriceInput.value ? parseFloat(maxPriceInput.value) : null;
-        // const startDate = startDateInput.value ? new Date(startDateInput.value) : null;
-        // const endDate = endDateInput.value ? new Date(endDateInput.value) : null;
 
-        console.log('Parsed Values:', { minPrice, maxPrice, startDate, endDate });
+        console.log('Parsed Values:', {minPrice, maxPrice, startDate, endDate});
 
         let validationErrors = [];
 
@@ -41,17 +37,6 @@ document.addEventListener('DOMContentLoaded', function () {
             }
         }
 
-        // Validate date range
-        // if (startDate && endDate) {
-        //     if (startDate > endDate) {
-        //         validationErrors.push('Start date must be less than or equal to end date.');
-        //         startDateInput.style.borderColor = 'red';
-        //         endDateInput.style.borderColor = 'red';
-        //     } else {
-        //         startDateInput.style.borderColor = '';
-        //         endDateInput.style.borderColor = '';
-        //     }
-        // }
 
         // If there are validation errors, prevent form submission and display errors
         if (validationErrors.length > 0) {

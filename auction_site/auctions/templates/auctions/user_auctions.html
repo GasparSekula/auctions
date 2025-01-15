@@ -3,15 +3,17 @@
 
 {% block title %}My Auctions{% endblock %}
 
-{% block extra_css %}<link rel="stylesheet" href="{% static 'css/user_auctions.css' %}">{% endblock %}
-{% block script %} <script src="{% static 'js/user_auctions.js' %}"></script> {% endblock %}
+{% block extra_css %}
+    <link rel="stylesheet" href="{% static 'css/user_auctions.css' %}">{% endblock %}
+{% block script %}
+    <script src="{% static 'js/user_auctions.js' %}"></script> {% endblock %}
 {% block content %}
-<h1>My Auctions</h1>
+    <h1>My Auctions</h1>
 
-<button id="toggleClosedAuctions">Hide Closed Auctions</button>
+    <button id="toggleClosedAuctions">Hide Closed Auctions</button>
 
-<table>
-    <thead>
+    <table>
+        <thead>
         <tr>
             <th>Title</th>
             <th>Status</th>
@@ -19,8 +21,8 @@
             <th>Winning Bidder</th>
             <th>Details</th>
         </tr>
-    </thead>
-    <tbody>
+        </thead>
+        <tbody>
         {% for auction in auctions %}
             <tr class="{% if not auction.is_active %}closed-auction{% endif %}">
                 <td>{{ auction.title }}</td>
@@ -29,11 +31,11 @@
                 <td>
                     {% if not auction.is_active %}
 
-                            {% if winning_bid %}
-                                {{ winning_bid.created_by.email }}
-                            {% else %}
-                                No bids
-                            {% endif %}
+                        {% if winning_bid %}
+                            {{ winning_bid.created_by.email }}
+                        {% else %}
+                            No bids
+                        {% endif %}
                     {% else %}
                         Auction is still active
                     {% endif %}
@@ -45,14 +47,14 @@
                 <td colspan="5">You have no auctions.</td>
             </tr>
         {% endfor %}
-    </tbody>
-</table>
+        </tbody>
+    </table>
 
-    <script>document.getElementById('toggleClosedAuctions').addEventListener('click', function() {
-    var closedAuctions = document.querySelectorAll('.closed-auction');
-    closedAuctions.forEach(function(auction) {
-        auction.style.display = auction.style.display === 'none' ? '' : 'none';
-    });
-    this.textContent = this.textContent === 'Hide Closed Auctions' ? 'Show Closed Auctions' : 'Hide Closed Auctions';
-});</script>
+    <script>document.getElementById('toggleClosedAuctions').addEventListener('click', function () {
+        var closedAuctions = document.querySelectorAll('.closed-auction');
+        closedAuctions.forEach(function (auction) {
+            auction.style.display = auction.style.display === 'none' ? '' : 'none';
+        });
+        this.textContent = this.textContent === 'Hide Closed Auctions' ? 'Show Closed Auctions' : 'Hide Closed Auctions';
+    });</script>
 {% endblock %}

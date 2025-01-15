@@ -31,6 +31,7 @@
                 <li><a href="{% url 'user_auctions' %}">My Auctions</a></li>
                 <li><a href="{% url 'notifications' %}">Notifications</a></li>
                 <li class="right"><a href="{% url 'account_logout' %}">My Account</a></li>
+                <span class="right-user">Logged in as: {{ user.username }}</span>
             {% else %}
                 <li class="right"><a href="{% url 'account_login' %}">Login or Register</a></li>
             {% endif %}
